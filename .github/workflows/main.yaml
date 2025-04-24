@@ -1,0 +1,27 @@
+
+name: mlops-ci
+
+on:
+    push:
+        branches: [main]
+
+    workflow_dispatch:
+
+jobs:
+    sync-to-hub:
+        runs-on: ubunto-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                fetch-depth: 0
+            - name: add remote
+              env: 
+                HF: ${{ secrets.HG }}
+              run: git remote add space  https://julienawonga:$HG@huggingface.co/spaces/julienawonga/mlOps-ci
+            - name: push to space
+              env: 
+                HF: ${{ secrets.HG }}
+              run: git push --force https://julienawonga:$HG@huggingface.co/spaces/julienawonga/mlOps-ci main
+
+
+
