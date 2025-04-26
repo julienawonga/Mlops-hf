@@ -17,11 +17,11 @@ jobs:
             - name: add remote
               env: 
                 HF: ${{ secrets.HG }}
-              run: git remote add space  https://julienawonga:$HG@huggingface.co/spaces/julienawonga/mlOps-ci
+              run: git remote add space  https://julienawonga:$HF@huggingface.co/spaces/julienawonga/mlOps-ci
             - name: push to space
               env: 
                 HF: ${{ secrets.HG }}
-              run: git push --force https://julienawonga:$HG@huggingface.co/spaces/julienawonga/mlOps-ci main
+              run: git push --force https://julienawonga:$HF@huggingface.co/spaces/julienawonga/mlOps-ci main
 
 
 
